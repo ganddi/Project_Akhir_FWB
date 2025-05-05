@@ -2,7 +2,7 @@
     <h1> MudahBerkemah(Sistem Penyewaan Peralatan Berkemah) </h1>
 
 
-  <img src="![Image](https://github.com/user-attachments/assets/c6e0944d-fa74-44c4-b1b8-459465e75638)" alt="Logo Unsulbar" width="200"/>
+  <img src="https://github.com/user-attachments/assets/c6e0944d-fa74-44c4-b1b8-459465e75638" alt="Logo Unsulbar" width="200"/>
 
 
   <p><strong>Muh.Sugandi</strong><br/>D0223315</p> <br>
