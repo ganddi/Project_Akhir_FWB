@@ -106,3 +106,36 @@ Pemilik bisnis menggunakan sistem untuk pengambilan keputusan.
 | transaction\_date | TIMESTAMP | Tanggal transaksi       |
 
 ---
+## Relasi Antar Tabel
+
+### `users` ↔ `rentals`
+
+* **Jenis:** One-to-Many
+* **Penjelasan:** Satu pengguna bisa memiliki banyak transaksi peminjaman.
+* **Relasi:** `users.id` → `rentals.user_id`
+
+### `items` ↔ `rental_items`
+
+* **Jenis:** One-to-Many
+* **Penjelasan:** Satu barang bisa muncul dalam banyak transaksi peminjaman.
+* **Relasi:** `items.id` → `rental_items.item_id`
+
+### `rentals` ↔ `rental_items`
+
+* **Jenis:** One-to-Many
+* **Penjelasan:** Satu transaksi peminjaman bisa memiliki banyak barang.
+* **Relasi:** `rentals.id` → `rental_items.rental_id`
+
+### `rentals` ↔ `sales_logs`
+
+* **Jenis:** One-to-One
+* **Penjelasan:** Setiap transaksi peminjaman tercatat di log penjualan.
+* **Relasi:** `rentals.id` → `sales_logs.rental_id`
+
+### `users` ↔ `sales_logs`
+
+* **Jenis:** One-to-Many
+* **Penjelasan:** Satu penyewa bisa memiliki banyak catatan transaksi.
+* **Relasi:** `users.id` → `sales_logs.user_id`
+
+---
