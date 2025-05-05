@@ -1,61 +1,109 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
+    <h1> SISTEM PENYEWAAN ASRAMA MAHASISWA </h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+  <img src="![Image](https://github.com/user-attachments/assets/c6e0944d-fa74-44c4-b1b8-459465e75638)" alt="Logo Unsulbar" width="200"/>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+  <p><strong>Ratri Pramudita</strong><br/>D0223321</p> <br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+  <h1> FRAMEWORK WEB BASED </h1>
+  <h1> 2025 </h1>
 
-## Learning Laravel
+</div>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# MudahBerkemah - Sistem Penyewaan Peralatan Berkemah
 
-## Laravel Sponsors
+**MudahBerkemah** adalah platform web yang memfasilitasi penyewaan peralatan berkemah. Sistem ini dirancang untuk tiga jenis pengguna utama: **Admin**, **Pelanggan (Penyewa)**, dan **Pemilik Bisnis**, masing-masing dengan hak akses dan fungsionalitas berbeda.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Role Pengguna
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+### 1. Admin
 
-## Contributing
+Admin bertanggung jawab atas pengelolaan operasional sistem.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Mengelola transaksi penyewaan.
+* Mengelola daftar barang (tambah/edit/hapus).
+* Mengelola data peminjaman (status, pengembalian, dll).
 
-## Code of Conduct
+### 2. Pelanggan / Penyewa
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Pelanggan adalah pengguna yang menyewa barang.
 
-## Security Vulnerabilities
+* Melihat daftar barang yang tersedia.
+* Melakukan penyewaan barang.
+* Melihat status peminjaman.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 3. Pemilik
 
-## License
+Pemilik bisnis menggunakan sistem untuk pengambilan keputusan.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* Melihat riwayat penjualan dan transaksi.
+* Menganalisis data penyewaan untuk perencanaan bisnis.
+
+---
+
+## Struktur Tabel Database
+
+### 1. `users`
+
+| Kolom       | Tipe Data | Keterangan                       |
+| ----------- | --------- | -------------------------------- |
+| id          | INT (PK)  | ID unik pengguna                 |
+| name        | VARCHAR   | Nama lengkap pengguna            |
+| email       | VARCHAR   | Email pengguna                   |
+| password    | VARCHAR   | Password yang sudah di-hash      |
+| role        | ENUM      | \['admin', 'penyewa', 'pemilik'] |
+| created\_at | TIMESTAMP | Tanggal registrasi pengguna      |
+
+### 2. `items`
+
+| Kolom           | Tipe Data | Keterangan                   |
+| --------------- | --------- | ---------------------------- |
+| id              | INT (PK)  | ID unik barang               |
+| name            | VARCHAR   | Nama barang                  |
+| description     | TEXT      | Deskripsi barang             |
+| stock           | INT       | Jumlah stok barang           |
+| price\_per\_day | DECIMAL   | Harga sewa per hari          |
+| image\_url      | VARCHAR   | URL gambar barang (opsional) |
+| created\_at     | TIMESTAMP | Tanggal barang ditambahkan   |
+
+### 3. `rentals`
+
+| Kolom        | Tipe Data | Keterangan                                               |
+| ------------ | --------- | -------------------------------------------------------- |
+| id           | INT (PK)  | ID unik peminjaman                                       |
+| user\_id     | INT (FK)  | ID penyewa                                               |
+| total\_price | DECIMAL   | Total biaya sewa                                         |
+| status       | ENUM      | \['menunggu', 'disetujui', 'dikembalikan', 'dibatalkan'] |
+| start\_date  | DATE      | Tanggal mulai sewa                                       |
+| end\_date    | DATE      | Tanggal selesai sewa                                     |
+| created\_at  | TIMESTAMP | Tanggal transaksi                                        |
+
+### 4. `rental_items`
+
+| Kolom      | Tipe Data | Keterangan            |
+| ---------- | --------- | --------------------- |
+| id         | INT (PK)  | ID unik baris         |
+| rental\_id | INT (FK)  | ID peminjaman         |
+| item\_id   | INT (FK)  | ID barang             |
+| quantity   | INT       | Jumlah unit disewa    |
+| price      | DECIMAL   | Harga sewa per barang |
+
+### 5. `sales_logs`
+
+| Kolom             | Tipe Data | Keterangan              |
+| ----------------- | --------- | ----------------------- |
+| id                | INT (PK)  | ID log                  |
+| rental\_id        | INT (FK)  | ID transaksi peminjaman |
+| user\_id          | INT (FK)  | ID penyewa              |
+| total\_price      | DECIMAL   | Total harga             |
+| status            | VARCHAR   | Status transaksi        |
+| transaction\_date | TIMESTAMP | Tanggal transaksi       |
+
+---
