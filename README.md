@@ -11,7 +11,7 @@
   <h1> 2025 </h1>
 
 </div>
-
+---
 # MudahBerkemah - Sistem Penyewaan Peralatan Berkemah
 
 ## Deskripsi Singkat
@@ -74,15 +74,15 @@ Pemilik bisnis menggunakan sistem untuk pengambilan keputusan.
 
 ### 3. `rentals`
 
-| Kolom        | Tipe Data | Keterangan                                               |
-| ------------ | --------- | -------------------------------------------------------- |
-| id           | INT (PK)  | ID unik peminjaman                                       |
-| user\_id     | INT (FK)  | ID penyewa                                               |
-| total\_price | DECIMAL   | Total biaya sewa                                         |
-| status       | ENUM      | \['menunggu', 'disetujui', 'dikembalikan', 'dibatalkan'] |
-| start\_date  | DATE      | Tanggal mulai sewa                                       |
-| end\_date    | DATE      | Tanggal selesai sewa                                     |
-| created\_at  | TIMESTAMP | Tanggal transaksi                                        |
+| Kolom        | Tipe Data | Keterangan                    |
+| ------------ | --------- | ----------------------------- |
+| id           | INT (PK)  | ID unik peminjaman            |
+| user\_id     | INT (FK)  | ID penyewa                    |
+| total\_price | DECIMAL   | Total biaya sewa              |
+| status       | ENUM      | \['dipinjam', 'dikembalikan'] |
+| start\_date  | DATE      | Tanggal mulai sewa            |
+| end\_date    | DATE      | Tanggal selesai sewa          |
+| created\_at  | TIMESTAMP | Tanggal transaksi             |
 
 ### 4. `rental_items`
 
@@ -106,6 +106,7 @@ Pemilik bisnis menggunakan sistem untuk pengambilan keputusan.
 | transaction\_date | TIMESTAMP | Tanggal transaksi       |
 
 ---
+
 ## Relasi Antar Tabel
 
 ### `users` ↔ `rentals`
