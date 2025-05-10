@@ -95,14 +95,13 @@
 | total_income | DECIMAL | Estimasi pendapatan berdasarkan penyewaan |
 | created_at | TIMESTAMP | Waktu sistem membuat laporan |
 
-### 6. `rental_verifications`
-
-| Kolom | Tipe Data | Keterangan |
-| --- | --- | --- |
-| rental_id | INT (PK, FK) | ID peminjaman (`rentals.id`) |
-| verified_by | INT (FK) | ID admin yang memverifikasi (`users.id`) |
-| verified_at | TIMESTAMP | Waktu verifikasi pembayaran/pengambilan |
-| notes | TEXT | Catatan khusus (opsional) |
+### 6. `rentals_notes`
+ 
+| Kolom        | Tipe Data   | Keterangan                                                                 |
+|--------------|-------------|---------------------------------------------------------------------------|
+| `rental_id`  | INT (PK, FK)| ID peminjaman (primary key, referensi ke `rentals.id`)                    |
+| `notes`      | TEXT        | Catatan khusus, misalnya kondisi barang saat dikembalikan atau denda       |
+| `created_at` | TIMESTAMP   | Waktu catatan dibuat, default ke waktu saat ini                           |
 
 ## Relasi Antar Tabel
 
@@ -133,10 +132,5 @@
 
 6. **rentals ↔ rental_verifications**:
    - **Jenis**: One-to-One.
-   - **Penjelasan**: Satu peminjaman memiliki satu entri verifikasi (mencatat admin yang memverifikasi, waktu verifikasi, dan catatan).
-   - **Kunci Relasi**: `rentals.id` → `rental_verifications.rental_id`.
-
-7. **users ↔ rental_verifications**:
-   - **Jenis**: One-to-Many.
-   - **Penjelasan**: Satu admin dapat memverifikasi banyak peminjaman.
-   - **Kunci Relasi**: `users.id` → `rental_verifications.verified_by`.
+   - **Penjelasan**: satu peminjaman hanya memiliki satu catatan.
+   - **Kunci Relasi**: rental_id memastikan hanya satu catatan per peminjaman.
