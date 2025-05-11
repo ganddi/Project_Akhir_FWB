@@ -56,7 +56,6 @@
 | id | INT (PK) | ID unik barang |
 | name | VARCHAR | Nama barang |
 | description | TEXT | Deskripsi barang |
-| stock | INT | Jumlah stok barang |
 | price_per_day | DECIMAL | Estimasi harga sewa per hari |
 | image_url | VARCHAR | URL gambar barang (opsional) |
 | created_at | TIMESTAMP | Tanggal barang ditambahkan |
