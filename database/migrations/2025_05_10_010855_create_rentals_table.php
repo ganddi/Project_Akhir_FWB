@@ -14,10 +14,9 @@ return new class extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->decimal('total_price', 8, 2);
             $table->enum('rental_status', ['belum_dibayar', 'dipinjam', 'dikembalikan'])->default('belum_dibayar');
-            $table->date('start_date');
-            $table->date('end_date');
+            // $table->date('start_date');
+            // $table->date('end_date');
             $table->timestamps();
         });
     }
