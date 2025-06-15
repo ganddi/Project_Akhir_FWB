@@ -47,6 +47,6 @@ class AuthController extends Controller
 
     public function logout(){
         Auth::logout();
-        return redirect()->route('login.lihat');
+        return redirect()->route('welcome', ['user' => Auth::user()]);
     }
 }
