@@ -26,12 +26,16 @@ class admin extends Controller
     }
     public function simpanItem(Request $request)
     {
-        $request->validate([
-            'nama' => 'required',
-            'image_url' => 'required|url',
-        ]);
+         $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'required|string',
+        'price_per_day' => 'required|numeric|min:0',
+        'image_url' => 'required|url',
+        
+    ]);
         Item::create($request->all());
-        return redirect()->route('lihatItem');
+        // dd($request);
+        return redirect()->route('lihatItem')->with('success', 'Item berhasil ditambahkan!');
     }
     public function editItem(Request $request)
     {
