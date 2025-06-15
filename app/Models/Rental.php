@@ -21,10 +21,10 @@ class Rental extends Model
     }
 
     // Relasi One-to-Many dengan rental_items
-    public function rentalItems()
-    {
-        return $this->hasMany(RentalItem::class, 'rental_id');
-    }
+    // public function rentalItems()
+    // {
+    //     return $this->hasMany(RentalItem::class, 'rental_id');
+    // }
 
     // Relasi Many-to-Many dengan items melalui rental_items
     public function items()

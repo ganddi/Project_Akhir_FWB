@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    protected $fillable = ['name', 'description', 'stock', 'price_per_day', 'image_url'];
+    protected $fillable = ['name', 'description', 'price_per_day','image'];
 
     // Relasi One-to-Many dengan rental_items
-    public function rentalItems()
-    {
-        return $this->hasMany(RentalItem::class, 'item_id');
-    }
+    // public function rentalItems()
+    // {
+    //     return $this->hasMany(RentalItem::class, 'item_id');
+    // }
 
     // Relasi Many-to-Many dengan rentals melalui rental_items
     public function rentals()
