@@ -19,7 +19,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'Tenda Double Layer 4 Orang',
                 'description' => 'Tenda berkualitas tinggi untuk 4 orang, tahan air.',
                 'price_per_day' => 50000.00,
-                'image_url' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fec-mall.akulaku.com%2Fmobile%2Fproduct%2Fdetail%3FspuId%3D318117139%26skuId%3D1072765410&psig=AOvVaw386sZgvFptBT5zQkv4J8HK&ust=1750045563247000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCPjOh_LB8o0DFQAAAAAdAAAAABAd',
+                'image_url' => 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full/catalog-image/108/MTA-173774493/no_brand_tenda_double_layer_4-5_orang_compass_camping_outdoor_waterproof_full02_mto4bya6.jpg',
                 'created_at' => now(),
             ],
             [
@@ -27,7 +27,7 @@ class ItemsTableSeeder extends Seeder
                 'name' => 'Kompor Portable',
                 'description' => 'Kompor Potable Merek Niko',
                 'price_per_day' => 20000.00,
-                'image_url' => 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ruparupa.com%2Fp%2Fkris-kompor-gas-portable-dengan-case-hitam.html&psig=AOvVaw3-vlFXx79XQID7Zn-vYPpM&ust=1750046010563000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIChyMTD8o0DFQAAAAAdAAAAABAE',
+                'image_url' => 'https://image.utamamega.co.id/s3/productimages/webp/co4584/p51997/w600-h600/908f8cdd-c746-4b28-9d5d-daba3c7861ff.jpg',
                 'created_at' => now(),
             ],
         ]);
