@@ -15,24 +15,27 @@ class penyewa extends Controller
         return view('penyewa.layout', compact('lihat'));
     }
 
-    public function rental(Request $request){
+    public function rental(Request $request)
+    {
+    DB::beginTransaction();
 
-        DB::beginTransaction();
-        try{
-        $rentals = new Rental();
-        $rentals -> user_id = Auth::user()-> id;
-        $rentals -> save();
-        
-        $ambil_item = $request-> item_id ? $request-> item_id : [];
-        $rentals-> items()->attach($ambil_item);
-        
+    try {
+        $rental = new Rental();
+        $rental->user_id = Auth::user()->id;
+        $rental->save();
+
+        $item_ids = $request->item_id ?? [];
+        $rental->items()->attach($item_ids);
+
         DB::commit();
-        return redirect()->route('penyewa')->with('Pemesanan Berhasil','Silahkan Lakukan Pembayaran');
-    }catch(\Exception $e){
+        return redirect()->route('penyewa')->with('success', 'Pemesanan berhasil! Silakan lakukan pembayaran.');
+    } catch (\Exception $e) {
         DB::rollBack();
-        return redirect()->route('peny')->with('Pemesana Gagal','Silahkan Coba Lagi'.$e->getMessage());
+        return redirect()->route('penyewa')->with('error', 'Pemesanan gagal! Silakan coba lagi. Error: ' . $e->getMessage());
     }
 }
 
-    
 }
+
+    
+

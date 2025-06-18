@@ -4,17 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Rental;
+use App\Models\RentalNote;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Termwind\Components\Raw;
 
 class admin extends Controller
 {
 
     //Item
-    public function dashboard()
-    {
-        return view('admin.dashboard');
-    }
     public function lihatItem()
     {
         $lihat = Item::all();
@@ -24,15 +22,16 @@ class admin extends Controller
     {
         return view('admin.Item.tambahItem');
     }
+  
     public function simpanItem(Request $request)
     {
-         $request->validate([
-        'name' => 'required|string|max:255',
-        'description' => 'required|string',
-        'price_per_day' => 'required|numeric|min:0',
-        'image_url' => 'required|url',
-        
-    ]);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price_per_day' => 'required|numeric|min:0',
+            'image_url' => ['required', 'url', 'regex:/\.(jpg|jpeg|png|webp)$/i']
+
+        ]);
         Item::create($request->all());
         // dd($request);
         return redirect()->route('lihatItem')->with('success', 'Item berhasil ditambahkan!');
@@ -69,7 +68,7 @@ class admin extends Controller
         $rental = Rental::findOrFail($id);
         $rental->rental_status = 'dipinjam';
         $rental->save();
-        
+
         return redirect()->back()->with('success', 'Status berhasil diubah.');
     }
     public function dipinjam()
@@ -79,17 +78,44 @@ class admin extends Controller
     }
     public function dikembalikan()
     {
-        $rentals = Rental::where('rental_status', 'dikembalikan')->get();
+       $rentals = Rental::with('rentalNote')->where('rental_status', 'dikembalikan') ->get();;
         return view('admin.rental.diKembalikan', compact('rentals'));
-    }
+    }   
     public function kembali($id)
     {
         $rental = Rental::findOrFail($id);
         $rental->rental_status = 'dikembalikan';
         $rental->save();
-        
+
         return redirect()->back()->with('success', 'Status berhasil diubah.');
     }
+
+
+    public function lihatNotes()
+    {
+        $rentals = RentalNote::all();
+        return view('admin.rental.lihatNotes', compact('rentals'));
+    }
+
+    public function tambahNotes($id)
+    {
+        return view('admin.rental.tambahNotes', compact('id'));
+    }
+
+
+    public function simpanNotes(Request $request, $id)
+    {
+        $rental = Rental::findOrFail($id);
+
+        $note = new RentalNote();
+        $note->rental_id = $rental->id;
+        $note->notes = $request->notes;
+        $note->save();
+
+        return redirect()->route('lihatNotes')->with('success', 'Catatan berhasil ditambahkan!');
+    }
+    
+
 
 
     //User
