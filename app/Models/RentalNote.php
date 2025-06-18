@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class RentalNote extends Model
 {
-   protected $fillable = ['rental_id', 'notes'];
+    protected $table = 'rentals_notes';
+    protected $fillable = ['rental_id', 'notes'];
 
     // Relasi One-to-One dengan rentals
     public function rental()
