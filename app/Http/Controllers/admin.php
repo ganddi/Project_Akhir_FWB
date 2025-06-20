@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Item;
 use App\Models\Rental;
+use App\Models\RentalItem;
 use App\Models\RentalNote;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,6 +39,13 @@ class admin extends Controller
     }
     public function editItem(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price_per_day' => 'required|numeric|min:0',
+            'image_url' => ['required', 'url', 'regex:/\.(jpg|jpeg|png|webp)$/i']
+
+        ]);
         $data = Item::findOrFail($request->id);
         if ($request->isMethod('post')) {
             $data->name = $request->name;
@@ -123,5 +131,11 @@ class admin extends Controller
     {
         $user = User::where('role', 'penyewa')->get(); // atau 'tipe_user', tergantung nama kolomnya
         return view('admin.Item.lihatUser', compact('user'));
+    }
+
+    public function lihatRentalItem()
+    {
+        $data = RentalItem::all();
+        return view('admin.rental.lihatRentalItem', compact('data'));
     }
 }
