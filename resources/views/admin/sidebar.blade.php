@@ -57,6 +57,11 @@
                     <i class="fas fa-fw fa fa-sticky-note"></i>
                     <span>Catatan</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/lihatRentalItem" >
+                    <i class="fas fa-fw fa fa-sticky-note"></i>
+                    <span>Rental Item</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
