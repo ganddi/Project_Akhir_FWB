@@ -1,23 +1,48 @@
 <div class="content-wrapper">
-    <h2 class="mx-10 mb-10 text-titlecase text-center">SEWA ALAT</h2>
+    <h2 class="text-center mb-4">Sewa Alat</h2>
+
     <div class="container card shadow p-4">
-        <form action="{{ route('submitRental') }}" method="post">
+        <form id="rentalForm" action="{{ route('submitRental') }}" method="POST">
             @csrf
-            <div class="mb-3 mx-5">
-                <label for="name" class="form-label">Pilih item</label>
-                    @foreach ($lihat as $item)
-                        <div class="form-check">
-                            <input name="item_id[]" class="form-check-input" type="checkbox" value="{{ $item->id }}" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                {{ $item->name }}
-                            </label>
-                        </div>
-                    @endforeach
+
+            <div class="mb-4">
+                <label for="name" class="form-label fw-bold">Pilih Item</label>
+                @forelse ($lihat as $item)
+                    <div class="form-check">
+                        <input name="item_id[]" class="form-check-input" type="checkbox" value="{{ $item->id }}">
+                            {{-- id="item-{{ $item->id }}"> --}}
+                        <label class="form-check-label" for="item-{{ $item->id }}">
+                            {{ $item->name }}
+                        </label>
+                    </div>
+                @empty
+                    <p class="text-muted">Tidak ada item tersedia untuk disewa.</p>
+                @endforelse
             </div>
 
-            <button class="mb-3 mx-5 btn btn-success" type="submit">Simpan</button>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-success" type="submit">Simpan</button>
+            </div>
         </form>
-        <button class="btn btn-danger mb-3 mx-5" onclick="window.location.href='/penyewa'">Kembali</button>
     </div>
-
 </div>
+
+
+<script>
+    
+    @if (session('success'))
+        alert("{{ session('success') }}");
+    @endif
+
+    @if (session('error'))
+        alert("{{ session('error') }}");
+    @endif
+
+    document.getElementById('rentalForm').addEventListener('submit', function(e) {
+        const checkboxes = document.querySelectorAll('input[name="item_id[]"]:checked');
+        if (checkboxes.length === 0) {
+            e.preventDefault();
+            alert('Silakan pilih minimal satu item sebelum menyimpan.');
+        }
+    });
+</script>
