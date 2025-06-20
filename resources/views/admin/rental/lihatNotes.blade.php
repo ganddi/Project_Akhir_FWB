@@ -15,25 +15,15 @@
                                 <table class="table table-striped project-orders-table">
                                     <thead>
                                         <tr>
-                                            <th>Pemesan</th>
                                             <th>Rental Id</th>
-                                            <th>Status</th>
+                                            <th>Note</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($rentals as $rental)
                                             <tr>
-                                                <td>{{ $rental->user->name ?? 'User tidak ditemukan' }}</td>
-                                                {{-- <td>{{ $rental->rental_items->item_id }}</td> --}}
-                                                <td>{{ $rental->id }}</td>
-                                                <td>{{ $rental->rental_status }}</td>
-                                                <td>
-                                                    <form action="{{ route('bayar', $rental->id) }}"
-                                                        method="POST">
-                                                        @csrf
-                                                        <button class="btn btn-success" type="submit">Konfirmasi</button>
-                                                    </form>
-                                                </td>
+                                                <td>{{ $rental->id ?? 'User tidak ditemukan' }}</td>
+                                                <td>{{ $rental->notes }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

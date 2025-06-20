@@ -7,7 +7,7 @@
     <body>
         <div class="content-wrapper">
             <div class="container card shadow p-4">
-                <h2 class="mx-10 mb-2 text-titlecase mb-4">List Item</h2>
+                <h2 class="mx-10 mb-2 text-titlecase mb-4">Pesanan Yang Belum Dibayar</h2>
                 <div class="row mx-10">
                     <div class="col-md-12 mx-10">
                         <div class="card">
@@ -30,7 +30,7 @@
                                                     <form action="{{ route('kembali', $rental->id) }}"
                                                         method="POST">
                                                         @csrf
-                                                        <button type="submit">Konfirmasi</button>
+                                                        <button class="btn btn-success" type="submit">Selesai</button>
                                                     </form>
                                                 </td>
                                             </tr>

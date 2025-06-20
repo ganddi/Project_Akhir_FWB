@@ -218,7 +218,7 @@
                                 aria-labelledby="userDropdown">
                                 <form action="{{route('logout')}}" method="POST">
                                     @csrf
-                                    <button class="btn btn-danger">Logout</button>
+                                    <button type="submit" class="btn btn-danger">Logout</button>
                                 </form>
                             </div>
                         </li>
